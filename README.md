@@ -51,3 +51,13 @@ printf '{
 }'| http  --follow --timeout 3600 POST 'http://localhost:8085/doSomething' \
  Content-Type:'application/json'
 ```
+
+#### Monitor messages in DLQ topic
+```
+kcat -b 127.0.0.1 -t dlq -f '\nKey: %k\t\nHeaders: %h \t\nValue: %s\\n--\n'
+```
+
+#### Monitor messages in Output topic
+```
+kcat -b 127.0.0.1 -t output
+```
