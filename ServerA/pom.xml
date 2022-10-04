@@ -14,13 +14,31 @@
 	<name>ServerA</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
+		<camel.version>3.18.1</camel.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
 			<artifactId>camel-spring-boot-starter</artifactId>
-			<version>3.18.1</version>
+			<version>${camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-jackson-starter</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<!-- JSON Schema Validator-->
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-json-validator-starter</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<!-- HTTP Server for listener mode -->
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-netty-http-starter</artifactId>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<dependency>
