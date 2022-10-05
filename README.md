@@ -23,7 +23,7 @@ cd docker-envs
 docker rm keycloak kafka zookeeper schema-registry
 ```
 
-### Start keycloak
+### Start Keycloak
 ```
 docker-compose -f compose.yml -f keycloak/compose.yml -f keycloak/initializer.yml up
 ```
