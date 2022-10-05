@@ -25,7 +25,7 @@ docker rm keycloak kafka zookeeper schema-registry
 
 ### Start keycloak
 ```
-docker-compose -f compose.yml -f keycloak/compose.yml up
+docker-compose -f compose.yml -f keycloak/compose.yml -f keycloak/initializer.yml up
 ```
 
 ### Start Apicurio Registry
