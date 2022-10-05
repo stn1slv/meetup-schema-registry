@@ -30,7 +30,7 @@ docker-compose -f compose.yml -f keycloak/compose.yml -f keycloak/initializer.ym
 
 ### Start Apicurio Registry
 ```
-docker-compose -f compose.yml -f apicurio-registry/compose-oidc.yml up
+docker-compose -f compose.yml -f apicurio-registry/compose-oidc.yml -f apicurio-registry/initializer.yml up
 ```
 
 ### Start Kafka
