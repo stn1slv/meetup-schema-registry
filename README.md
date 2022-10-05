@@ -2,11 +2,34 @@
 
 
 ## Start environment
+1. Clone https://github.com/stn1slv/docker-envs repo
+```
+git clone https://github.com/stn1slv/docker-envs
+```
+2. Use root directory
+```
+cd docker-envs
+```
+
+### Start keycloak
+```
+docker-compose -f compose.yml -f keycloak/compose.yml up
+```
+
+### Start Apicurio Registry
+```
+docker-compose -f compose.yml -f apicurio-registry/compose-oidc.yml up
+```
+
+### Start Kafka
+```
+docker-compose -f compose.yml -f kafka/compose-cp.yml up
+```
 
 ## Testing
 ### Send message to Kafka
 ```
-printf ' <?xml version="1.0" encoding="utf-8"?>
+printf '<?xml version="1.0" encoding="utf-8"?>
 <PurchaseOrder xmlns="http://tempuri.org/PurchaseOrderSchema.xsd" 
     xsi:schemaLocation="http://tempuri.org/PurchaseOrderSchema.xsd schema.xsd" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
