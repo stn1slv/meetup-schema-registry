@@ -20,7 +20,7 @@ cd docker-envs
 
 ### Cleanup
 ```
-docker rm keycloak kafka zookeeper schema-registry
+docker rm keycloak kafka zookeeper schema-registry sr-init kc-init
 ```
 
 ### Start Keycloak
