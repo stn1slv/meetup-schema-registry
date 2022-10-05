@@ -18,6 +18,11 @@ git clone https://github.com/stn1slv/docker-envs
 cd docker-envs
 ```
 
+### Cleanup
+```
+docker rm keycloak kafka zookeeper schema-registry
+```
+
 ### Start keycloak
 ```
 docker-compose -f compose.yml -f keycloak/compose.yml up
