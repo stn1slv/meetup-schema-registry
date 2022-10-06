@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -55,7 +55,6 @@
     <orderEntry type="library" name="Maven: org.apache.camel:camel-core-engine:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-api:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-core-reifier:3.18.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-support:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-util:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel.springboot:camel-bean-starter:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-bean:3.18.1" level="project" />
@@ -94,8 +93,6 @@
     <orderEntry type="library" name="Maven: org.apache.camel:camel-stub:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel.springboot:camel-timer-starter:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-timer:3.18.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel.springboot:camel-validator-starter:3.18.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-validator:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel.springboot:camel-vm-starter:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-vm:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel.springboot:camel-xpath-starter:3.18.1" level="project" />
@@ -105,6 +102,18 @@
     <orderEntry type="library" name="Maven: org.apache.camel.springboot:camel-xml-jaxp-starter:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-xml-jaxp:3.18.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-xml-io-util:3.18.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel.springboot:camel-kafka-starter:3.18.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-kafka:3.18.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-support:3.18.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.kafka:kafka-clients:3.1.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.luben:zstd-jni:1.5.0-4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.lz4:lz4-java:1.8.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xerial.snappy:snappy-java:1.1.8.4" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel.springboot:camel-validator-starter:3.18.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-validator:3.18.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.7.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.7.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.7.3" level="project" />
