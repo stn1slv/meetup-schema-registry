@@ -64,7 +64,7 @@ printf '<?xml version="1.0" encoding="utf-8"?>
 <PurchaseOrder xmlns="http://tempuri.org/PurchaseOrderSchema.xsd" 
     xsi:schemaLocation="http://tempuri.org/PurchaseOrderSchema.xsd schema.xsd" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    OrderDate="1974-13-01">
+    OrderDate="1974-12-01">
     <ShipTo country="US">
         <name>string</name>
         <street>string</street>
