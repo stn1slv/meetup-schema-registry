@@ -60,24 +60,21 @@ mvn clean spring-boot:run -f ServerB/pom.xml
 ## Testing
 ### Send message to Kafka
 ```
-echo '<?xml version="1.0" encoding="UTF-8"?><purchaseOrder><billTo>for me</billTo><orderDate>2022-10-04</orderDate><shipTo><city>Novi Sad</city><country>Serbia</country><name>Novi Sad Train Station</name><state>Novi Sad</state><street>Bulevar Jaše Tomića</street></shipTo></purchaseOrder>' | kcat -P -b 127.0.0.1 -t input
+kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_Alice.xml
+```
+
+```
+kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_John.xml
 ```
 
 ### Send message via http endpoint
 
 ```
-echo '{
-    "orderDate": "2022-10-04",
-    "shipTo": {
-        "country": "Serbia",
-        "state": "Novi Sad",
-        "city": "Novi Sad",
-        "street": "Bulevar Jaše Tomića",
-        "name": "Novi Sad Train Station"
-    },
-    "billTo": "for me"
-}'| http  --follow --timeout 3600 POST 'http://localhost:8085/doSomething' \
- Content-Type:'application/json'
+cat examples/purchaseOrderV1_Alice.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
+```
+
+```
+cat examples/purchaseOrderV1_John.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
 ```
 
 #### Monitor messages in DLQ topic
