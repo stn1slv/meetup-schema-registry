@@ -60,26 +60,7 @@ mvn clean spring-boot:run -f ServerB/pom.xml
 ## Testing
 ### Send message to Kafka
 ```
-printf '<?xml version="1.0" encoding="utf-8"?>
-<PurchaseOrder xmlns="http://tempuri.org/PurchaseOrderSchema.xsd" 
-    xsi:schemaLocation="http://tempuri.org/PurchaseOrderSchema.xsd schema.xsd" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    OrderDate="2022-10-01">
-    <ShipTo country="US">
-        <name>Novi Sad Train Station</name>
-        <street>Bulevar Jaše Tomića</street>
-        <city>Novi Sad</city>
-        <state>Novi Sad</state>
-        <zip>21000</zip>
-    </ShipTo>
-    <BillTo>
-        <name>Novi Sad Train Station</name>
-        <street>Bulevar Jaše Tomića</street>
-        <city>Novi Sad</city>
-        <state>Novi Sad</state>
-        <zip>21000</zip>
-    </BillTo>
-</PurchaseOrder>' | kcat -P -b 127.0.0.1 -t input
+echo -e '<?xml version="1.0" encoding="UTF-8"?><purchaseOrder><billTo>for me</billTo><orderDate>2022-10-04</orderDate><shipTo><city>Novi Sad</city><country>Serbia</country><name>Novi Sad Train Station</name><state>Novi Sad</state><street>Bulevar Jaše Tomića</street></shipTo></purchaseOrder>' | kcat -P -b 127.0.0.1 -t input
 ```
 
 ### Send message via http endpoint
