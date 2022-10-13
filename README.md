@@ -60,13 +60,13 @@ mvn clean spring-boot:run -f ServerB/pom.xml
 ## Testing
 ### Send message to Kafka
 ```
-echo -e '<?xml version="1.0" encoding="UTF-8"?><purchaseOrder><billTo>for me</billTo><orderDate>2022-10-04</orderDate><shipTo><city>Novi Sad</city><country>Serbia</country><name>Novi Sad Train Station</name><state>Novi Sad</state><street>Bulevar Jaše Tomića</street></shipTo></purchaseOrder>' | kcat -P -b 127.0.0.1 -t input
+echo '<?xml version="1.0" encoding="UTF-8"?><purchaseOrder><billTo>for me</billTo><orderDate>2022-10-04</orderDate><shipTo><city>Novi Sad</city><country>Serbia</country><name>Novi Sad Train Station</name><state>Novi Sad</state><street>Bulevar Jaše Tomića</street></shipTo></purchaseOrder>' | kcat -P -b 127.0.0.1 -t input
 ```
 
 ### Send message via http endpoint
 
 ```
-printf '{
+echo '{
     "orderDate": "2022-10-04",
     "shipTo": {
         "country": "Serbia",
