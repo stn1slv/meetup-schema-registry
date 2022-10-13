@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<purchaseOrder>
+  <name>Alice Brown</name>
+  <sku>54321</sku>
+  <price>199.95</price>
+  <orderDate>2020-10-10</orderDate>
+  <shipTo>
+    <name>Bob Brown</name>
+    <address>456 Oak Lane</address>
+    <city>Pretendville</city>
+    <state>HI</state>
+    <zip>98999</zip>
+  </shipTo>
+  <billTo>
+    <name>Alice Brown</name>
+    <address>456 Oak Lane</address>
+    <city>Pretendville</city>
+    <state>HI</state>
+    <zip>98999</zip>
+  </billTo>
+</purchaseOrder>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<purchaseOrder>
+    <name>John Smith</name>
+    <sku>20223</sku>
+    <price>23.95</price>
+    <orderDate>2020-10-10</orderDate>
+    <shipTo>
+        <name>Jane Smith</name>
+        <address>123 Maple Street</address>
+        <city>Pretendville</city>
+        <state>NY</state>
+        <zip>12345</zip>
+    </shipTo>
+    <billTo>
+        <name>John Smith</name>
+        <address>123 Maple Street</address>
+        <city>Pretendville</city>
+        <state>NY</state>
+        <zip>12345</zip>
+    </billTo>
+</purchaseOrder>
