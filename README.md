@@ -2,16 +2,16 @@
 
 ```mermaid
 flowchart LR
-    subgraph JSON
+    subgraph JSON Schema
       direction LR
       httpie--->|JSON over HTTP|ServiceA
     end
-    subgraph XML
+    subgraph XML Schema
       direction LR
-      kcat---->inputTopic---->ServiceB==>isValid{is it valid?}
-      isValid -- valid ----> outputTopic
-      isValid -- invalid --> dlqTopic
-      subgraph Kafka
+      kcat---->|XML|inputTopic---->|XML|ServiceB
+      ServiceB -- valid message ----> outputTopic
+      ServiceB -- invalid message --> dlqTopic
+      subgraph Kafka Broker
         direction TB
         inputTopic
         outputTopic
