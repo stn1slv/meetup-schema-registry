@@ -1,4 +1,25 @@
-# schema-registry-demo
+# Schema Registry Demo
+
+```mermaid
+flowchart LR
+    subgraph JSON
+      direction LR
+      httpie--->|JSON over HTTP|ServiceA
+    end
+    subgraph XML
+      direction LR
+      kcat---->inputTopic---->ServiceB==>isValid{is it valid?}
+      isValid -- valid ----> outputTopic
+      isValid -- invalid --> dlqTopic
+      subgraph Kafka
+        direction TB
+        inputTopic
+        outputTopic
+        dlqTopic
+      end
+    end
+```
+
 ## Preparing
 You have to add some entries to your ```/etc/hosts``` file:
 ```
