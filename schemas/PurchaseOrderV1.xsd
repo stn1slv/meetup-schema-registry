@@ -5,7 +5,7 @@
             <xs:sequence>
                 <xs:element type="nameType" name="name"/>
                 <xs:element type="xs:string" name="sku"/>
-                <xs:element type="xs:integer" name="price"/>
+                <xs:element type="xs:decimal" name="price"/>
                 <xs:element type="xs:date" name="orderDate"/>
                 <xs:element name="shipTo">
                     <xs:complexType>
