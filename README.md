@@ -102,29 +102,31 @@ mvn clean spring-boot:run -f ServerB/pom.xml
 ## Testing
 #### JSON Schema
 ###### Send JSON message via http endpoint
+John made a purchase of item 20223 for Jane:
 ```
 cat examples/purchaseOrderV1_Alice.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
 ```
-
+Alice sent a present to Bob:
 ```
 cat examples/purchaseOrderV1_John.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
 ```
 #### XML Schema
 ###### Send XML message to Input topic in Kafka
+John made a purchase of item 20223 for Jane:
 ```
 kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_Alice.xml
 ```
-
+Alice sent a present to Bob:
 ```
 kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_John.xml
 ```
-
 ###### Monitor messages in DLQ topic
+In case of validation failure the message will be moved  to dlq topic:
 ```
 kcat -b 127.0.0.1 -t dlq -f '\nKey: %k\t\nHeaders: %h \t\nValue: %s\\n--\n'
 ```
-
 ###### Monitor messages in Output topic
+In case of successful validation the message will be moved to output topic:
 ```
 kcat -b 127.0.0.1 -t output
 ```
