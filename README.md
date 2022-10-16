@@ -29,6 +29,39 @@ You have to add some entries to your ```/etc/hosts``` file:
 ```
 That's needed for host resolution because Kafka brokers and Kafka clients connecting to Keycloak have to use the same hostname to ensure the compatibility of generated access tokens. Also, when Kafka client connects to Kafka broker running inside docker image, the broker will redirect the client to ```kafka:9092```.
 
+##### MacOS
+Required software:
+- Docker engine & docker compose (Docker Desktop for Mac or [Rancher Desktop](https://github.com/rancher-sandbox/rancher-desktop/))
+- [Git](https://github.com/git/git)
+- [Apache Maven](https://github.com/apache/maven)
+- [httpie](https://github.com/httpie/httpie) (or any other http client)
+- [kcat](https://github.com/edenhill/kcat) (or any other kafka client)
+
+You can install using following command:
+```
+brew install git httpie kcat maven
+```
+
+##### Linux
+Required software:
+- Docker engine & docker compose
+- [Git](https://github.com/git/git)
+- [Apache Maven](https://github.com/apache/maven)
+- [httpie](https://github.com/httpie/httpie) (or any other http client)
+- [kcat](https://github.com/edenhill/kcat) (or any other kafka client)
+
+On Ubuntu you can install last three tools using the following command:
+```
+sudo apt update && sudo apt install git httpie kafkacat maven -y
+```
+
+##### Windows
+Required software:
+- Docker Desktop for Windows
+- [Git](https://git-scm.com/download/win) 
+- [Apache Maven](https://github.com/apache/maven)
+- Windows Subsystem for Linux (for httpie and kcat/kafkacat)
+
 ## Start environment
 1. Clone https://github.com/stn1slv/docker-envs repo
 ```
@@ -38,25 +71,13 @@ git clone https://github.com/stn1slv/docker-envs
 ```
 cd docker-envs
 ```
-
-### Cleanup
+3. Cleanup
 ```
 docker rm keycloak kafka zookeeper schema-registry sr-init kc-init
 ```
-
-### Start Keycloak
+4. Start KeyCloak, Apicurio Registry and Kafka
 ```
-docker-compose -f compose.yml -f keycloak/compose.yml -f keycloak/initializer.yml up
-```
-
-### Start Apicurio Registry
-```
-docker-compose -f compose.yml -f apicurio-registry/compose-oidc.yml -f apicurio-registry/initializer.yml up
-```
-
-### Start Kafka
-```
-docker-compose -f compose.yml -f kafka/compose-cp.yml up
+docker-compose -f keycloak/compose.yml -f keycloak/initializer.yml -f apicurio-registry/compose-oidc.yml -f apicurio-registry/initializer.yml -f kafka/compose-cp.yml  up
 ```
 
 ## Start demo applications
@@ -79,7 +100,17 @@ mvn clean spring-boot:run -f ServerB/pom.xml
 ```
 
 ## Testing
-### Send message to Kafka
+#### JSON Schema
+###### Send JSON message via http endpoint
+```
+cat examples/purchaseOrderV1_Alice.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
+```
+
+```
+cat examples/purchaseOrderV1_John.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
+```
+#### XML Schema
+###### Send XML message to Input topic in Kafka
 ```
 kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_Alice.xml
 ```
@@ -88,22 +119,12 @@ kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_Alice.xml
 kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_John.xml
 ```
 
-### Send message via http endpoint
-
-```
-cat examples/purchaseOrderV1_Alice.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
-```
-
-```
-cat examples/purchaseOrderV1_John.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
-```
-
-#### Monitor messages in DLQ topic
+###### Monitor messages in DLQ topic
 ```
 kcat -b 127.0.0.1 -t dlq -f '\nKey: %k\t\nHeaders: %h \t\nValue: %s\\n--\n'
 ```
 
-#### Monitor messages in Output topic
+###### Monitor messages in Output topic
 ```
 kcat -b 127.0.0.1 -t output
 ```
