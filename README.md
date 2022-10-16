@@ -1,24 +1,6 @@
 # Schema Registry Demo
 
-```mermaid
-flowchart LR
-    subgraph JSON Schema
-      direction LR
-      httpie--->|JSON over HTTP|ServiceA
-    end
-    subgraph XML Schema
-      direction LR
-      kcat---->|XML|inputTopic---->|XML|ServiceB
-      ServiceB -- valid message ----> outputTopic
-      ServiceB -- invalid message --> dlqTopic
-      subgraph Kafka Broker
-        direction TB
-        inputTopic
-        outputTopic
-        dlqTopic
-      end
-    end
-```
+![Demo case](pics/SchemaRegistryDemo.svg)
 
 ## Preparing
 You have to add some entries to your ```/etc/hosts``` file:
