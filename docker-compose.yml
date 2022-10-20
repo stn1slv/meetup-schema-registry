@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+    # KeyCloak
+    keycloak:
+        image: quay.io/keycloak/keycloak:19.0.2
+        container_name: keycloak
+        environment:
+          KEYCLOAK_ADMIN: admin
+          KEYCLOAK_ADMIN_PASSWORD: admin
+          KEYCLOAK_LOGLEVEL: INFO
+        command: "-Dkeycloak.profile.feature.upload_scripts=enabled start-dev"
+        ports:
+          - 8080:8080
+    kc-init:      
+      # Sources: https://github.com/stn1slv/keycloak-initializer
+      image: stn1slv/keycloak-dev-data:1.0
+      container_name: kc-init
+      environment:
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+        KEYCLOAK_ENDPOINT: http://keycloak:8080/
+        KEYCLOAK_REALM: registry                  # realm name for creation users and clints
+    # Apicurio Schema Registry
+    schema-registry:
+      image: apicurio/apicurio-registry-mem:2.3.1.Final
+      container_name: schema-registry
+      environment:
+          ###--- COMMON CONFIG ---
+          - AUTH_ENABLED=true
+          - KEYCLOAK_URL=http://keycloak:8080/
+          - KEYCLOAK_REALM=registry
+          - KEYCLOAK_API_CLIENT_ID=registry-api
+          - KEYCLOAK_UI_CLIENT_ID=apicurio-registry
+          
+          ###--- AOUTH2 AUTH ---
+          - CLIENT_CREDENTIALS_BASIC_AUTH_ENABLED=false
+          - REGISTRY_AUTH_ANONYMOUS_READ_ACCESS_ENABLED=true
+          - ROLE_BASED_AUTHZ_ENABLED=true
+          - ROLE_BASED_AUTHZ_SOURCE=token
+          - OWNER_ONLY_AUTHZ_ENABLED=true
+          - REGISTRY_UI_CONFIG_AUTH_TYPE=none
+          ### Configuration params: https://www.apicur.io/registry/docs/apicurio-registry/2.3.x/getting-started/assembly-configuring-the-registry.html#all-registry-configs_registry
+      ports:
+          - 8180:8080
+    sr-init:
+      # Sources: https://github.com/stn1slv/apicurio-registry-initializer
+      image: stn1slv/apicurio-registry-dev-data:1.0
+      container_name: sr-init
+      environment:
+        KEYCLOAK_USER: jcooper
+        KEYCLOAK_PASSWORD: jcooper
+        KEYCLOAK_ENDPOINT: http://keycloak:8080/
+        KEYCLOAK_REALM: registry                  # realm name for creation users and clints
+        KEYCLOAK_CLIENT_ID: registry-api
+        KEYCLOAK_CLIENT_SECRET: registry-api-secret
+        APICURIO_ENDPOINT: http://schema-registry:8080 #without last slash
+      # Kafka
+    zookeeper:
+      image: confluentinc/cp-zookeeper:6.1.1
+      container_name: zookeeper
+      environment:
+          - ZOOKEEPER_CLIENT_PORT=2181
+          - ZOOKEEPER_TICK_TIME=2000
+          - ZOOKEEPER_SYNC_LIMIT=2
+      ports:
+          - 2181:2181
+    kafka:
+        image: confluentinc/cp-kafka:6.1.1
+        container_name: kafka
+        depends_on:
+            - zookeeper
+        ports:
+            - 9092:9092
+        environment:
+            - KAFKA_BROKER_ID=1
+            - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+            - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+            - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      
