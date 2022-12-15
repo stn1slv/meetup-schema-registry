@@ -1,6 +1,7 @@
 # Schema Registry Demo
 
-![Demo case](pics/SchemaRegistryDemo.svg)
+![Demo case](pics/SchemaRegistryDemo-dark.svg#gh-dark-mode-only)
+![Demo case](pics/SchemaRegistryDemo-light.svg#gh-light-mode-only)
 
 ## Preparing
 You have to add some entries to your ```/etc/hosts``` file:
