@@ -23,6 +23,12 @@
         "shipTo": {
             "type": "object",
             "properties": {
+                "country": {
+                    "type": "string",
+                    "default": "US",
+                    "minLength": 2,
+                    "maxLength": 2
+                },
                 "state": {
                     "type": "string",
                     "minLength": 2,
