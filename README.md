@@ -85,6 +85,9 @@ mvn clean spring-boot:run -f ServerB/pom.xml
 ## Testing
 #### JSON Schema
 ###### Send JSON message via http endpoint
+
+<details><summary>Successful</summary>
+
 John made a purchase of item 20223 for Jane:
 ```
 cat examples/purchaseOrderV1_Alice.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
@@ -93,6 +96,20 @@ Alice sent a present to Bob:
 ```
 cat examples/purchaseOrderV1_John.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
 ```
+</details>
+
+<details><summary>Failed</summary>
+
+John made a purchase of item 20223 for Jane:
+```
+cat examples/purchaseOrderV1_Alice-invalid.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
+```
+Alice sent a present to Bob:
+```
+cat examples/purchaseOrderV1_John-invalid.json | http POST 'http://localhost:8085/doSomething' Content-Type:'application/json'
+```
+</details>
+
 #### XML Schema
 ###### Send XML message to Input topic in Kafka
 John made a purchase of item 20223 for Jane:

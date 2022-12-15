@@ -1,0 +1,20 @@
+{
+    "name": "Alice Brown",
+    "sku": "54321",
+    "price": 199.95,
+    "orderDate": "2020-10-10",
+    "shipTo": {
+        "name": "Bob Brown",
+        "address": "456 Oak Lane",
+        "city": "Pretendville",
+        "state": "Hawaii",
+        "zip": "98999"
+    },
+    "billTo": {
+        "name": "Alice Brown",
+        "address": "456 Oak Lane",
+        "city": "Pretendville",
+        "state": "Hawaii",
+        "zip": "98999"
+    }
+}
