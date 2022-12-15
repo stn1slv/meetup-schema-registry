@@ -86,7 +86,7 @@ mvn clean spring-boot:run -f ServerB/pom.xml
 #### JSON Schema
 ###### Send JSON message via http endpoint
 
-<details><summary>Successful</summary>
+<details><summary>Successful case</summary>
 
 John made a purchase of item 20223 for Jane:
 ```
@@ -98,7 +98,7 @@ cat examples/purchaseOrderV1_John.json | http POST 'http://localhost:8085/doSome
 ```
 </details>
 
-<details><summary>Failed</summary>
+<details><summary>Failed case</summary>
 
 John made a purchase of item 20223 for Jane:
 ```
@@ -112,6 +112,10 @@ cat examples/purchaseOrderV1_John-invalid.json | http POST 'http://localhost:808
 
 #### XML Schema
 ###### Send XML message to Input topic in Kafka
+
+<details><summary>Successful case</summary>
+
+###### Send messages
 John made a purchase of item 20223 for Jane:
 ```
 kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_Alice.xml
@@ -120,16 +124,30 @@ Alice sent a present to Bob:
 ```
 kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_John.xml
 ```
-###### Monitor messages in DLQ topic
-In case of validation failure the message will be moved  to dlq topic:
-```
-kcat -b 127.0.0.1 -t dlq -f '\nKey: %k\t\nHeaders: %h \t\nValue: %s\\n--\n'
-```
 ###### Monitor messages in Output topic
 In case of successful validation the message will be moved to output topic:
 ```
 kcat -b 127.0.0.1 -t output
 ```
+</details>
+
+<details><summary>Failed case</summary>
+
+###### Send messages
+John made a purchase of item 20223 for Jane:
+```
+kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_Alice-invalid.xml
+```
+Alice sent a present to Bob:
+```
+kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_John-invalid.xml
+```
+###### Monitor messages in DLQ topic
+In case of validation failure the message will be moved  to dlq topic:
+```
+kcat -b 127.0.0.1 -t dlq -f '\nKey: %k\t\nHeaders: %h \t\nValue: %s\\n--\n'
+```
+</details>
 ## URLs
 #### Apicurio Registry
 Endpoint: http://keycloak:8180/ui/artifacts
