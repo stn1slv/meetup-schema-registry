@@ -12,7 +12,11 @@ You have to add some entries to your ```/etc/hosts``` file:
 ```
 That's needed for host resolution because Kafka brokers and Kafka clients connecting to Keycloak have to use the same hostname to ensure the compatibility of generated access tokens. Also, when Kafka client connects to Kafka broker running inside docker image, the broker will redirect the client to ```kafka:9092```.
 
-##### MacOS
+
+
+Preparing local environment:
+<details><summary>MacOS</summary>
+
 Required software:
 - Docker engine & docker compose (Docker Desktop for Mac or [Rancher Desktop](https://github.com/rancher-sandbox/rancher-desktop/))
 - [Git](https://github.com/git/git)
@@ -24,8 +28,10 @@ You can install using following command:
 ```
 brew install git httpie kcat maven
 ```
+</details>
 
-##### Linux
+<details><summary>Linux</summary>
+
 Required software:
 - Docker engine & docker compose
 - [Git](https://github.com/git/git)
@@ -37,13 +43,16 @@ On Ubuntu you can install last three tools using the following command:
 ```
 sudo apt update && sudo apt install git httpie kafkacat maven -y
 ```
+</details>
 
-##### Windows
+<details><summary>Windows</summary>
+
 Required software:
 - Docker Desktop for Windows
 - [Git](https://git-scm.com/download/win) 
 - [Apache Maven](https://github.com/apache/maven)
 - Windows Subsystem for Linux (for httpie and kcat/kafkacat)
+</details>
 
 ## Start environment
 1. Clone this repository
