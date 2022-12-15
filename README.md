@@ -145,9 +145,10 @@ kcat -P -b 127.0.0.1 -t input examples/purchaseOrderV1_John-invalid.xml
 ###### Monitor messages in DLQ topic
 In case of validation failure the message will be moved  to dlq topic:
 ```
-kcat -b 127.0.0.1 -t dlq -f '\nKey: %k\t\nHeaders: %h \t\nValue: %s\\n--\n'
+kcat -C -b 127.0.0.1 -t dlq -f '\nKey: %k\t\nHeaders: %h \t\nValue: %s\\n--\n'
 ```
 </details>
+
 ## URLs
 #### Apicurio Registry
 Endpoint: http://keycloak:8180/ui/artifacts
