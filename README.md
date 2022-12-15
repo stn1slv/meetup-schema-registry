@@ -103,3 +103,13 @@ In case of successful validation the message will be moved to output topic:
 ```
 kcat -b 127.0.0.1 -t output
 ```
+## URLs
+#### Apicurio Registry
+Endpoint: http://keycloak:8180/ui/artifacts
+
+###### Users
+| Username | Password | Role         |
+| -------- | -------- | ------------ |
+| jcooper  | jcooper  | sr-admin     |
+| fkafka   | fkafka   | sr-developer |
+| cdickens | cdickens | sr-readonly  |
