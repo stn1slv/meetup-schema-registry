@@ -23,7 +23,7 @@ services:
         KEYCLOAK_REALM: registry                  # realm name for creation users and clints
     # Apicurio Schema Registry
     schema-registry:
-      image: apicurio/apicurio-registry-mem:2.3.1.Final
+      image: apicurio/apicurio-registry-mem:2.4.1.Final
       container_name: schema-registry
       environment:
           ###--- COMMON CONFIG ---
