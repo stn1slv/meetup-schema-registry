@@ -57,11 +57,11 @@ Required software:
 ## Start environment
 1. Clone this repository
 ```
-git clone https://github.com/stn1slv/schema-registry-demo
+git clone https://github.com/stn1slv/meetup-schema-registry
 ```
 2. Use root directory of the repo
 ```
-cd schema-registry-demo
+cd meetup-schema-registry
 ```
 3. Cleanup
 ```
