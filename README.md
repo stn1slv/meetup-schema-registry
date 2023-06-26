@@ -1,5 +1,5 @@
 # Schema Registry Demo
-The [presentation](slides.pdf) from the meetup.
+The [recording](https://youtu.be/9aql6xu8kRc) and [slides](slides.pdf) from the meetup.
 
 ![Demo case](.img/SchemaRegistryDemo-dark.svg#gh-dark-mode-only)
 ![Demo case](.img/SchemaRegistryDemo-light.svg#gh-light-mode-only)
